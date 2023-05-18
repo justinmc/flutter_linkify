@@ -45,8 +45,11 @@ class MyHomePage extends StatelessWidget {
         text: '$url\n',
         children: <InlineSpan>[
           TextSpan(
-            text: 'https://www.ex https://www.ex ftp://subdomain.example.com',
+            text: 'https://www.ex ftp://subdomain.example.com https://www.ex',
             children: <InlineSpan>[
+              TextSpan(
+                text: 'ample.com ex',
+              ),
               TextSpan(
                 text: 'ample.com',
               ),
