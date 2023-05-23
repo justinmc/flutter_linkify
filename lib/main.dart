@@ -40,25 +40,6 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<InlineSpan> spans = <InlineSpan>[
-      const TextSpan(
-        text: '$url\n',
-        children: <InlineSpan>[
-          TextSpan(
-            text: 'https://www.ex ftp://subdomain.example.com https://www.ex',
-            children: <InlineSpan>[
-              TextSpan(
-                text: 'ample.com ex',
-              ),
-              TextSpan(
-                text: 'ample.com',
-              ),
-            ],
-          ),
-        ],
-      ),
-    ];
-
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -66,23 +47,34 @@ class MyHomePage extends StatelessWidget {
       body: Center(
         child: Builder(
           builder: (BuildContext context) {
+            final List<InlineSpan> spans = <InlineSpan>[
+              TextSpan(
+                text: '$url\n',
+                style: DefaultTextStyle.of(context).style,
+                children: const <InlineSpan>[
+                  TextSpan(
+                    text: 'https://www.ex ftp://subdomain.example.com https://www.ex',
+                    children: <InlineSpan>[
+                      TextSpan(
+                        text: 'ample.com ex',
+                      ),
+                      TextSpan(
+                        text: 'ample.com',
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ];
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 LinkedText.spans(
-                  children: spans,
                   onTap: _onTapUrl,
+                  children: spans,
                 ),
                 RichText(
-                  text: TextSpan(
-                    style: DefaultTextStyle.of(context).style,
-                    text: '|I am text|',
-                    children: const <InlineSpan>[
-                      TextSpan(
-                        text: '|I am a nested TextSpan\'s text|',
-                      ),
-                    ],
-                  ),
+                  text: spans.first,
                 ),
               ],
             );
