@@ -44,42 +44,95 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Center(
-        child: Builder(
-          builder: (BuildContext context) {
-            final List<InlineSpan> spans = <InlineSpan>[
-              TextSpan(
-                text: '$url\n',
-                style: DefaultTextStyle.of(context).style,
-                children: const <InlineSpan>[
-                  TextSpan(
-                    text: 'https://www.ex ftp://subdomain.example.com https://www.ex',
-                    children: <InlineSpan>[
-                      TextSpan(
-                        text: 'ample.com ex',
+      body: Builder(
+        builder: (BuildContext context) {
+          final List<InlineSpan> spans = <InlineSpan>[
+            TextSpan(
+              text: '$url?q=0\n',
+              style: DefaultTextStyle.of(context).style,
+              children: <InlineSpan>[
+                TextSpan(
+                  text: 'https://www.ex ftp://subdomain.example.com https://www.ex',
+                  children: <InlineSpan>[
+                    TextSpan(
+                      style: TextStyle(
+                        fontWeight: FontWeight.w800,
+                        decoration: TextDecoration.combine(<TextDecoration>[
+                          TextDecoration.lineThrough,
+                          TextDecoration.underline,
+                        ]),
                       ),
-                      TextSpan(
-                        text: 'ample.com',
+                      text: 'ample.com?q=1 ex',
+                    ),
+                    const TextSpan(
+                      text: 'ample.com?q=2',
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            TextSpan(
+              text: '\nhttps://',
+              style: DefaultTextStyle.of(context).style,
+              children: <InlineSpan>[
+                TextSpan(
+                  text: 'www.',
+                  children: <InlineSpan>[
+                    TextSpan(
+                      style: TextStyle(
+                        fontWeight: FontWeight.w800,
+                        decoration: TextDecoration.combine(<TextDecoration>[
+                          TextDecoration.lineThrough,
+                          TextDecoration.underline,
+                        ]),
                       ),
-                    ],
-                  ),
-                ],
-              ),
-            ];
-            return Column(
+                      text: 'ex',
+                    ),
+                    const TextSpan(
+                      text: 'ample',
+                    ),
+                    const TextSpan(
+                      text: '.com?q=3\nex',
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            TextSpan(
+              style: DefaultTextStyle.of(context).style,
+              text: 'ample.com?q=4',
+            ),
+            TextSpan(
+              style: DefaultTextStyle.of(context).style,
+              text: '\nex',
+            ),
+            TextSpan(
+              style: DefaultTextStyle.of(context).style,
+              text: 'ample.com?q=5',
+            ),
+          ];
+
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32.0),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 LinkedText.spans(
                   onTap: _onTapUrl,
                   children: spans,
                 ),
+                const SizedBox(
+                  height: 64.0,
+                ),
                 RichText(
-                  text: spans.first,
+                  text: TextSpan(
+                    children: spans,
+                  ),
                 ),
               ],
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
