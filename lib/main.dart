@@ -129,6 +129,13 @@ class MyHomePage extends StatelessWidget {
                     children: spans,
                   ),
                 ),
+                const SizedBox(
+                  height: 16.0,
+                ),
+                LinkedText(
+                  onTap: _onTapUrl,
+                  text: text,
+                ),
               ],
             ),
           );
