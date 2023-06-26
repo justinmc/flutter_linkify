@@ -119,7 +119,7 @@ class MyHomePage extends StatelessWidget {
               children: <Widget>[
                 LinkedText.spans(
                   onTap: _onTapUrl,
-                  children: spans,
+                  spans: spans,
                 ),
                 const SizedBox(
                   height: 64.0,
