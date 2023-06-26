@@ -114,8 +114,7 @@ class MyHomePage extends StatelessWidget {
 
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: ListView(
               children: <Widget>[
                 LinkedText.spans(
                   onTap: _onTapUrl,
