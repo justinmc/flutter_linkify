@@ -106,9 +106,6 @@ class MyHomePage extends StatelessWidget {
               style: DefaultTextStyle.of(context).style,
               text: '\nex',
             ),
-            const WidgetSpan(
-              child: FlutterLogo(),
-            ),
             TextSpan(
               style: DefaultTextStyle.of(context).style,
               text: 'ample.com?q=5',
@@ -141,6 +138,9 @@ class MyHomePage extends StatelessWidget {
                 const SizedBox(
                   height: 64.0,
                 ),
+                // TODO(justinmc): Create an example of LinkedText.textLinkers
+                // in order to make sure that works well with disposing recognizers.
+                // Actually, also try LinkedText with a passed in linkBuilder.
               ],
             ),
           );
@@ -149,3 +149,4 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
